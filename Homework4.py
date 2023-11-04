@@ -1,26 +1,28 @@
-#task 1
-import os
-# try:
-#     f = open("demo.txt","x")
-# except:
-#     print('The file has been created')
-n = int(input("Enter 1 or 2: "))
-if n == 1 and os.path.exists("demo.txt"):
-        os.remove('demo.txt')
-else:
-    data = input("Enter file data: ")
-    f = open("demo.txt","a")
-    fr = open("demo.txt","r")
+# #task 1
+# import os
+# # try:
+# #     f = open("demo.txt","x")
+# # except:
+# #     print('The file has been created')
+# n = int(input("Enter 1 or 2: "))
+# if n == 1 and os.path.exists("demo.txt"):
+#         os.remove('demo.txt')
+# else:
+#     data = input("Enter file data: ")
+#     f = open("demo.txt","a")
+#     fr = open("demo.txt","r").read()
+#     print(fr)
+    # print(list(fr.read().split(",")))
     # lenFr = len(fr.read())
- 
-    print("data bu qederdir: ",fr.read().split().count(data))
     # print(lenFr)
-   
-   
+    # print("data bu qederdir: ",fr.read().split().count(data))
+    # print(lenFr) 
+    # a = fr.read().split(",")
     # if(len(fr.read())==0):
     #    f.write(data)
-    # elif (fr.read().split().count(data)==0):
-    #     f.write(" "+data)
+    # elif list(a).count() == 0:
+    #     f.write(","+data)
+    #     print(list(fr.read()))
     # f.close()
 
 
@@ -29,12 +31,9 @@ else:
 
 
 
-
-
-
-
-
-
+#task 2
+# demoTxt = open("demo.txt","r").read()
+# print(0,len(demoTxt)-1)
 
 
 
