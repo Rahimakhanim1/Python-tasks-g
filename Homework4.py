@@ -1,42 +1,28 @@
-# #task 1
-# import os
-# # try:
-# #     f = open("demo.txt","x")
-# # except:
-# #     print('The file has been created')
-# n = int(input("Enter 1 or 2: "))
-# if n == 1 and os.path.exists("demo.txt"):
-#         os.remove('demo.txt')
-# else:
-#     data = input("Enter file data: ")
-#     f = open("demo.txt","a")
-#     fr = open("demo.txt","r").read()
-#     print(fr)
-    # print(list(fr.read().split(",")))
-    # lenFr = len(fr.read())
-    # print(lenFr)
-    # print("data bu qederdir: ",fr.read().split().count(data))
-    # print(lenFr) 
+#task 1
+import os
+n = int(input("Enter 1 or 2: "))
+if n == 1 and os.path.exists("demo.txt"):
+        os.remove('demo.txt')
+else:
+    data = input("Enter file data: ")
+    f = open("demo.txt","a")
+    fr = open("demo.txt").read()
+    # print('rehime' in list(fr.split()))
+  
     # a = fr.read().split(",")
-    # if(len(fr.read())==0):
-    #    f.write(data)
-    # elif list(a).count() == 0:
-    #     f.write(","+data)
-    #     print(list(fr.read()))
-    # f.close()
+    if(len(fr)==0):
+       f.write(data)
+    elif data not in list(fr.split()):
+        f.write(","+data)
+        # print(list(fr))
+    f.close()
 
-
-# allInfo = f.read()
-# print(allInfo)
 
 
 
 #task 2
-# demoTxt = open("demo.txt","r").read()
+# demoTxt = open("demo.txt").read()
 # print(0,len(demoTxt)-1)
-
-
-
 
 
 
