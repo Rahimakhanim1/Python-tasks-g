@@ -19,7 +19,8 @@
 
 #task 2
 # demoTxt = open("demo.txt").read()
-# print(0,len(demoTxt)-1)
+# file = demoTxt.split(',')
+# print(file[0],file[len(file)-1])
 
 
 
