@@ -1,21 +1,18 @@
 #task 1
-import os
-n = int(input("Enter 1 or 2: "))
-if n == 1 and os.path.exists("demo.txt"):
-        os.remove('demo.txt')
-else:
-    data = input("Enter file data: ")
-    f = open("demo.txt","a")
-    fr = open("demo.txt").read()
-    # print('rehime' in list(fr.split()))
-  
-    # a = fr.read().split(",")
-    if(len(fr)==0):
-       f.write(data)
-    elif data not in list(fr.split()):
-        f.write(","+data)
-        # print(list(fr))
-    f.close()
+# import os
+# n = int(input("Enter 1 or 2: "))
+# if n == 1 and os.path.exists("demo.txt"):
+#         os.remove('demo.txt')
+# else:
+#     data = input("Enter file data: ")
+#     f = open("demo.txt","a")
+#     fr = open("demo.txt").read()
+#     if(len(fr)==0):
+#        f.write(data)
+#     elif data not in list(fr.split()):
+#         f.write(","+data)
+#     f.close()
+#     fr.close()
 
 
 
