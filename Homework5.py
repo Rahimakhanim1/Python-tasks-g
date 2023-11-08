@@ -1,13 +1,5 @@
-# import datetime
-# from datetime import timedelta
-# n = input("Dogum gununuzu daxil edin: ")
-# days = n.strftime("%A")    
-
-
 birthday = input("Please enter your birthday (YYYY-MM-DD): ")
-
 year, month, day = map(int, birthday.split('-'))
-
 import datetime
 current_date = datetime.date.today()
 
