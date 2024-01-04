@@ -1,0 +1,36 @@
+/* .input-section{
+    width:400px;
+    height:40px;
+    background:  linear-gradient(125deg, #ccffff, #33ccff, #ff0066, #cc33ff,#66ffcc);
+    animation:colored 2s infinite;
+    background-size:400%;
+
+}
+form input{
+    width:380px;
+    height: 20px;
+    margin:8px;
+    text-align: center;
+    border:none;
+    outline:none;
+}
+
+@keyframes colored{
+    0%{
+        background-position:0 50%;
+    }
+     50%{
+        background-position:100% 50%;
+    }
+     100%{
+        background-position:0 50%;
+    }
+}
+
+button{
+    width:100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+
+} */

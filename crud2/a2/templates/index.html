@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    </head>
+
+    <body>
+      <a href="{% url 'image' %} " class="btn btn-warning">GO Images</a>
+      <form action="{% url 'postImg' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="imgfile">
+        <button type = "submit" class="btn btn-warning">Yeslee</button>
+
+      </form>
+      <br>
+      {% if edit %}
+      <h1>Edit</h1>
+      <form action="{% url 'update' edit.id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+      
+          <!-- <div class="input-section"><input name="name" placeholder="Enter Your Name" value="{{edit.name}}"></div> -->
+          <br>
+          <!-- {{ form.surname}} -->
+          <!-- <div class="input-section"><input name="surname" placeholder="Enter Your Surname" value="{{edit.surname}}"></div> -->
+          <br><br>
+          <div class="input-section"><button type="submit">Submit</button></div>
+
+
+      </form>
+
+
+      {% else %}
+      <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'app\static\src\pic\navbar\WhatsApp.svg.png' %}" alt="PyWhatKit" width="40" height="40">
+
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  You
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Your Messages</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search" action="{% url 'search' %}" method="post">
+              {% csrf_token %}
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+              <button class="btn btn-outline-success text-body" type="submit">Search</button>
+            </form>        
+          </div>
+        </div>
+    </nav>
+
+      {% if confirm %}
+      <h4>Silmek istediyinizden eminsiznizmi?</h4>
+
+      <a href="{% url 'delete' confirm.id %}"><i class="bi bi-check">Delete</i></a>
+      <a href="{% url 'index' %}"><i class="bi bi-x">geriye</i></a>
+
+      {% endif %}
+
+      <h1>Else </h1>
+       <form action="{% url 'post' %}" method="post">
+        {% csrf_token %}
+        <div class="input-section"><input name="name" placeholder="Enter Your Name"></div>
+        <br>
+        <div class="input-section"><input name="surname" placeholder="Enter Your Surname"></div>
+        <br><br>
+        <div class="input-section"><button type="submit">Submit</button></div>
+
+       </form>
+
+       {% endif %}
+
+    {% if search %}
+      
+          <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                  <th scope="col"><button>Delete</button></th>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                  <th></th>
+                  <th>Tarix</th>
+                </tr>
+              </thead>
+              <tbody>
+             
+                {{axtar}}
+                    {% for x in axtar %}
+                    <tr>
+                      <td><input type="checkbox" name="x" value="{{x.id}}"></td>
+                      <td scope="row">{{ x.id}}</td>
+                      <td>{{x.name}}</td>
+                      <td>{{x.surname}}</td>
+                      <td><a class="btn btn-danger" href="{% url 'confirm' x.id %}">Delete</a></td>
+                      <td><a class="btn btn-primary" href="{% url 'edit' x.id %}" >Edit</a></td>
+                      <td><a href="{% url 'detail' x.id %}" class="btn btn-success btn-sm"><i class="bi bi-eye">{{x.id}}</i></a></td>
+                      <td>{{ x.history}}</td>
+                    
+                    </tr>
+                    {% endfor %}
+
+         
+            
+                
+              </tbody>
+          </table>
+
+
+          {% else %}
+          <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                  <th scope="col"><button>Delete</button></th>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+
+                  <th></th>
+                  <th>Tarix</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  {% for x in data %}
+                  <tr>
+                    <td><input type="checkbox" name="x" value="{{x.id}}"></td>
+                    <td scope="row">{{ x.id}}</td>
+                    <td>{{x.name}}</td>
+                    <td>{{x.surname}}</td>
+                    <td><a class="btn btn-danger" href="{% url 'confirm' x.id %}">Delete</a></td>
+                    <td><a class="btn btn-primary" href="{% url 'edit' x.id %}" >Edit</a></td>
+                    <td><a href="{% url 'detail' x.id %}" class="btn btn-success btn-sm"><i class="bi bi-eye">{{x.id}}</i></a></td>
+                    <td>{{ x.history}}</td>
+                  
+                  </tr>
+                  {% endfor %}
+             
+              </tbody>
+          </table>
+
+          {% endif %}
+
+          <div class="alert alert-danger">{{say}}</div>
+   
+
+     
+  
+        <script src="" async defer></script>
+    </body>
+</html>
+
+
